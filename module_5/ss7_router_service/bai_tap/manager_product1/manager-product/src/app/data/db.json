@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "IPhone14",
+      "price": 149009,
+      "description": "Sản xuất năm 2020",
+      "category": {
+        "id": 2,
+        "name": "TV"
+      }
+    },
+    {
+      "id": 3,
+      "name": "IP!5",
+      "price": 149009,
+      "description": "Sản xuất năm 2020",
+      "category": {
+        "id": 1,
+        "name": "SmartPhone"
+      }
+    },
+    {
+      "id": 4,
+      "name": "TV Sony",
+      "price": 149009,
+      "description": "Sản xuất năm 2020",
+      "category": {
+        "id": 2,
+        "name": "TV"
+      }
+    },
+    {
+      "id": "6",
+      "name": "TV SamSung",
+      "price": 780000,
+      "description": "6 inch",
+      "category": {
+        "id": 2,
+        "name": "TV"
+      }
+    },
+    {
+      "id": "188",
+      "name": "SamSung TV",
+      "price": 1700000,
+      "description": "32 inch",
+      "category": {
+        "id": 2,
+        "name": "TV"
+      }
+    }
+  ],
+  "categorys": [
+    {
+      "id": 1,
+      "name": "SmartPhone"
+    },
+    {
+      "id": 2,
+      "name": "TV"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai4</title>
+</head>
+<body>
+Tính thuế lương nhân viên <br>
+<input type="number" id="inputMoney">
+<button onclick="bai4()">Tính Tiền</button>
+<p id="outbai4"></p>
+</body>
+<script>
+    function bai4() {
+        let moNey = Number.parseFloat(document.getElementById("inputMoney").value);
+        let thue;
+        if (moNey<7000000)
+            {
+                thue = moNey*0.05;
+            }else
+                {
+                    if (moNey<15000000)
+                        {
+                            thue = moNey*0.1;
+                        }else
+                            {
+                                thue = moNey*0.2;
+                            }
+                }
+        document.getElementById("outbai4").innerHTML = "Với " + moNey+" thuế bạn phải trả là: "+thue +" vnd";
+
+    }
+</script>
+</html>

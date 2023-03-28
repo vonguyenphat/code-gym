@@ -1,0 +1,332 @@
+<!doctype html>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+
+    <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Carousel Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .slide {
+            margin: 0 17%;
+        }
+
+        /*view*/
+        .container {
+            margin: 20px auto;
+
+        }
+
+        .table-striped {
+            width: 100%;
+        }
+
+        .table-striped th {
+            text-align: center;
+            background-color: #CFE2FF;
+        }
+
+        .table-striped td {
+            text-align: center;
+        }
+
+        .searchAndAdd {
+            margin: 20px 0;
+        }
+
+        .add {
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            text-decoration: none;
+        }
+
+        .add:hover {
+            background: #242526;
+            color: white;
+            text-decoration: none;
+        }
+
+        .searchAndAdd form input {
+            padding: 4px 5px;
+            margin-top: 20px;
+        }
+
+        .searchAndAdd select {
+            padding: 7px 3px;
+            border-style: groove;
+
+        }
+
+        .container-table {
+            border: 2px groove #CFE2FF;
+
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/carousel/carousel.css" rel="stylesheet">
+</head>
+<body>
+
+<header th:fragment="header">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Furama</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/customer/index}">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/employee/index}">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/service/index}">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contract/index}">Contract</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img width="100%"
+                                                                                                    height="100%"
+                                                                                                    src="https://cdn1.ivivu.com/iVivu/2022/03/03/18/53114-furama-resort-da-nang-11-800x450.jpg"
+                                                                                                    alt="First slide">
+                </svg>
+
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img width="100%"
+                                                                                                    height="100%"
+                                                                                                    src="https://annambooking.vn/wp-content/uploads/2021/02/Furama-Resort-Ocean-Pool.jpg.jpg"
+                                                                                                    alt="First slide">
+                </svg>
+
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img width="100%"
+                                                                                                    height="100%"
+                                                                                                    src="https://www.vmgfashion.com/Data/Sites/1/media/default/img/%C4%90%E1%BB%91i%20t%C3%A1c/furama-%C4%91%C3%A0-n%E1%BA%B5ng.jpg"
+                                                                                                    alt="First slide">
+                </svg>
+
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"/>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>Some representative placeholder content for the three columns of text below the carousel. This is the
+                    first column.</p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"/>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
+                    column.</p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"/>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+
+                <h2>Heading</h2>
+                <p>And lastly this, the third column of representative placeholder content.</p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">KHU NGHỈ DƯỠNG ĐẲNG CẤP THẾ GIỚI, FURAMA ĐÀ NẴNG, <span
+                        class="text-muted">NỔI TIẾNG LÀ KHU NGHỈ DƯỠNG ẨM THỰC TẠI VIỆT NAM.</span></h2>
+                <p class="lead">Hướng ra bãi biển Đà Nẵng trải dài cát trắng, Furama Resort Đà Nẵng là cửa ngõ đến với 3
+                    di sản văn hoá thế giới: Hội An (20 phút), Mỹ Sơn (90 phút) và Huế (2 tiếng. 196 phòng hạng sang
+                    cùng với 70 căn biệt thự từ hai đến bốn phòng ngủ có hồ bơi riêng đều được trang trí trang nhã, theo
+                    phong cách thiết kế truyền thống của Việt Nam và kiến trúc thuộc địa của Pháp, biến Furama thành khu
+                    nghỉ dưỡng danh giá nhất tại Việt Nam – vinh dự được đón tiếp nhiều người nổi tiếng, giới hoàng gia,
+                    chính khách, ngôi sao điện ảnh và các nhà lãnh đạo kinh doanh quốc tế.</p>
+            </div>
+            <div class="col-md-5">
+                <div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <img width="100%"
+                         height="100%"
+                         src="https://furamavietnam.com/wp-content/uploads/2018/07/Vietnam_Danang_Furama_Resort_Exterior_Beach.jpg"
+                         alt="First slide">
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading"> GIẢI TRÍ. <span
+                        class="text-muted"></span></h2>
+                <p class="lead">Biến kỳ nghỉ dưỡng năng động hơn bằng cách tham gia các hoạt động thể thao trên nước từ chèo thuyền catamaran, lướt ván buồm, chèo…</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <img width="100%"
+                         height="100%"
+                         src="https://furamavietnam.com/wp-content/uploads/2018/07/RECREATION.jpg"
+                         alt="First slide">
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">TRẢI NGHIỆM ẨM THỰC <span class="text-muted".</span></h2>
+                <p class="lead">Trải nghiệm ẩm thực tại Khu nghỉ có sự pha trộn độc đáo các món ăn truyền thống Việt Nam
+                    với nhiều những hương vị ẩm thực châu Á, Ý và châu Âu cùng các món bò nhập khẩu thượng hạng tại đa
+                    dạng các nhà hàng, quầy bar đẳng cấp được bao quanh bởi một khu vườn nhiệt đới h…</p>
+            </div>
+            <div class="col-md-5">
+                <div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                    <img width="100%"
+                         height="100%"
+                         src="https://furamavietnam.com/wp-content/uploads/2018/07/CULIRARY.jpg"
+                         alt="First slide">
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
+
+    <!-- FOOTER -->
+
+</main>
+
+<footer class="container" th:fragment="footer">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
+</body>
+</html>

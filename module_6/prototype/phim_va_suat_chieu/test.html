@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Seat Booking</title>
+    <style>
+        /*body {*/
+        /*    font-family: Arial, sans-serif;*/
+        /*}*/
+        /*h1 {*/
+        /*    text-align: center;*/
+        /*    color: #ff6600;*/
+        /*}*/
+        /*.container {*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    flex-direction: column;*/
+        /*}*/
+        /*.screen {*/
+        /*    width: 500px;*/
+        /*    height: 50px;*/
+        /*    background-color: #222;*/
+        /*    color: #fff;*/
+        /*    text-align: center;*/
+        /*    font-size: 24px;*/
+        /*    margin-bottom: 20px;*/
+        /*}*/
+        /*.seat {*/
+        /*    width: 10px;*/
+        /*    height: 10px;*/
+        /*    margin: 5px;*/
+        /*    background-color: gray;*/
+        /*    display: inline-block;*/
+        /*    border-radius: 10px;*/
+        /*    cursor: pointer;*/
+        /*    transition: background-color 0.3s ease;*/
+        /*}*/
+        /*.seat:hover {*/
+        /*    background-color: #777;*/
+        /*}*/
+        /*.available {*/
+        /*    background-color: green;*/
+        /*}*/
+        /*.booked {*/
+        /*    background-color: red;*/
+        /*    cursor: not-allowed;*/
+        /*}*/
+        .seat-selection {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .seat-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: nowrap; /* không xuống dòng khi đầy kích thước */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row-header {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ddd;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #fff;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .seat:not(.occupied):hover {
+            background-color: #bada55;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #555;
+        }
+
+    </style>
+</head>
+<body>
+<div class="seat-selection">
+    <h2>Chọn ghế xem phim</h2>
+    <ul class="seat-list">
+        <li class="row-header"></li>
+        <li class="seat">1</li>
+        <li class="seat">2</li>
+        <li class="seat">3</li>
+        <li class="seat">4</li>
+        <li class="seat">5</li>
+        <li class="seat">6</li>
+        <li class="seat">7</li>
+        <li class="seat">8</li>
+        <li class="seat">9</li>
+        <li class="seat">10</li>
+        <li class="seat">11</li>
+        <li class="seat">12</li>
+        <li class="seat">13</li>
+        <li class="seat">14</li>
+        <li class="seat">15</li>
+        <li class="row-header">A</li>
+        <li class="seat">A1</li>
+        <li class="seat">A2</li>
+        <li class="seat">A3</li>
+        <li class="seat">A4</li>
+        <li class="seat">A5</li>
+        <li class="seat">A6</li>
+        <li class="seat">A7</li>
+        <li class="seat">A8</li>
+        <li class="seat">A9</li>
+        <li class="seat">A10</li>
+        <li class="seat">A11</li>
+        <li class="seat">A12</li>
+        <li class="seat">A13</li>
+        <li class="seat">A14</li>
+        <li class="seat">A15</li>
+        <!-- các hàng khác -->
+    </ul>
+    <button class="submit-button">Đặt vé</button>
+</div>
+
+</body>
+</html>

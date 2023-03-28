@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cau 2</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    let index_min;
+    let max, min
+    let index_max;
+    let length_N = prompt("Nhập độ dài của mảng")
+    for (let i = 0; i < length_N; i++) {
+        arr[i] = prompt("Nhập phần tử thứ " + (i + 1) + " trong mảng")
+    }
+    document.writeln("mảng arr = [" + arr + "]<br>")
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j] < arr[j + 1]) {
+            max = arr[j + 1];
+            index_max = (j + 1)
+        }
+    }
+
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j] < arr[j + 1]) {
+            min = arr[j];
+            index_min = (j - 2)
+        }
+    }
+
+
+    document.writeln(index_min)
+    document.writeln(index_max)
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+<body>
+<h3>Add Customer</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customer/create}" th:object="${customer}"
+          method="post" novalidate="novalidate">
+        <div>
+            <h1 th:text="#{languages}"></h1>
+<!--            <label th:text="#{languages}"></label>-->
+            <a href="/customer/create?langRequest=vi">vietnam</a>
+            <a href="/customer/create?langRequest=en">en</a>
+        </div>
+        <div>
+            <label th:text="#{pageSize}">page size</label>
+            <label>
+                <select th:field="*{pageSize}">
+                    <option th:each="customer :${customersList}"
+                            th:value="${customer.pageSize}"
+                            th:utext="${customer.pageSize}">
+                    </option>
+                </select>
+            </label> emails per page
+        </div>
+        <div>
+            <label th:text="#{spamsFiller}">Spams filler</label>
+            <input type="checkbox" th:field="*{spamsFiller}"/> Enable spams filler
+        </div>
+        <div>
+            <label th:text="#{signature}">signature</label>
+            <input type="text" th:field="*{signature}">
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

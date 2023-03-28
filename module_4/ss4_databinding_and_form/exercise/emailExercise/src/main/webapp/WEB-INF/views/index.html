@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Product Management</h3>
+<p>
+    <a th:href="@{/customer/create}">
+        Add new customer
+    </a>
+</p>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customersList}">
+        <td th:text="${customer.pageSize}"></td>
+        <td th:text="${customer.spamsFiller}"></td>
+        <td th:text="${customer.signature}"></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

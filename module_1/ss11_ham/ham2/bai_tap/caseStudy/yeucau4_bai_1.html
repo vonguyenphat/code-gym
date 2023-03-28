@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function vietHoachudau(inputText) {
+        document.write(inputText + '<br>')
+        inputText = inputText.toLowerCase();
+        let outputText = '';
+        let words = inputText.split(' ');
+        for (let i = 0; i < words.length; i++) {
+            if (words[i] == '') {
+                words.splice(i, 1);
+                i--;
+            }
+        }
+        for (let i = 0; i < words.length; i++) {
+            outputText += words[i].charAt(0).toUpperCase() + words[i].slice(1) + ' '
+        }
+        document.write(outputText + '<br>')
+    }
+
+    vietHoachudau('Võ NGUYễn Ph');
+
+    function timTuDaiNhat(inputText) {
+        let words = inputText.split(' ');
+        let index = 0;
+        for (let i = 0; i < words.length; i++) {
+            if (words[i] == '') {
+                words.splice(i, 1);
+                i--;
+            }
+            let max = 0;
+            for (j in words) {
+                if (words[j].length > max) {
+                    max = words[j].length;
+                    index = j
+                }
+            }
+        }
+        document.write('Từ dài nhất là ' + words[index] + ' ở vị trí ' + index + '<br>')
+    }
+
+    timTuDaiNhat('a ba abc abcd abcde abce');
+
+    function main() {
+        let inputText = prompt('Type something');
+        vietHoachudau(inputText);
+        timTuDaiNhat(inputText)
+    }
+
+    main()
+</script>
+</body>
+</html>

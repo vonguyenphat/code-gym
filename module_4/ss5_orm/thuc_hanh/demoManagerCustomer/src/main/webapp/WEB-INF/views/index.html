@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+<body>
+
+<h1><span class="glyphicon glyphicon-home"></span> Manager Customer</h1>
+<hr>
+<div class="container">
+    <div class="searchAndAdd">
+
+        <a class="add" th:href="@{/customer/create}"> <span class="glyphicon glyphicon-plus"></span> Add new
+            customer</a>
+
+        <form action="">
+
+            <label>
+                <input type="text" placeholder="" name="">
+            </label>
+            <label>
+                <input type="text" placeholder="" name="">
+            </label>
+            <label>
+                <select aria-label=".form-select-sm example">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </label>
+            <button type="submit" class="btn btn-primary">search</button>
+        </form>
+
+    </div>
+    <div class="container-table">
+        <p>Customer List</p>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" row,rowStat : ${listCustomer}">
+                <td th:text="${rowStat.count}"></td>
+                <td th:text="${row.name}"></td>
+                <td th:text="${row.age}"></td>
+                <td th:text="${row.address}"></td>
+                <td><a th:href="@{/product/edit(id=${row.id})}"> <span class="glyphicon glyphicon-pencil"></span> </a>
+                </td>
+                <td><a th:href="@{/product/delete(id=${row.id})}"> <span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">Thêm mới khách hàng</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="customerForm">
+    <div class="row">
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Mã khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="id">
+        <span class="errormessage" *ngIf="customerForm.controls.id.hasError('required') && customerForm.controls.id.touched">
+            *Vui lòng nhập mã khách hàng</span>
+        <span class="errormessage" *ngIf="customerForm.controls.id.hasError('pattern') && customerForm.controls.id.touched">
+            *Mã khách hàng không hợp lệ Ví dụ KH-0001</span>
+      </div>
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Tên khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="customerName">
+
+        <span class="errormessage"
+              *ngIf="customerForm.controls.customerName.hasError('required') && customerForm.controls.customerName.touched">
+            *Vui lòng nhập tên khách hàng</span>
+        <span class="errormessage"
+              *ngIf="customerForm.controls.customerName.hasError('minLength') && customerForm.controls.customerName.touched">
+            *Độ dài họ và tên tối thiểu 3 kí tự</span>
+      </div>
+      <div class="col-6 div-select-modal-addNew">
+        <label class="tilte-input-modal-addNew">Loại khách hàng: </label><br>
+        <select class="form-select select-modal-addNew" formControlName="customerType">
+          <option selected *ngFor="let item of customertypes"
+                  [ngValue]="item">{{item.name}}</option>
+        </select><br><br>
+      </div>
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Ngày sinh khách hàng: </label>
+        <input type="date" class="form-control input-modal-addNew" formControlName="birthday">
+      </div>
+
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Giới tính khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="gender">
+      </div>
+
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Mã thẻ khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="idCard">
+      </div>
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Số điện khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="phone">
+      </div>
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Emai khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="email">
+      </div>
+      <div class="col-6">
+        <label class="tilte-input-modal-addNew">Địa chỉ khách hàng: </label>
+        <input type="text" class="form-control input-modal-addNew" formControlName="address">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+  <button type="submit" class="btn btn-primary" (click)="closeModal()">Save</button>
+</div>

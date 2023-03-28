@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chuyển đổi tiền tệ </title>
+    <style>
+        select
+        {
+            white;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+    </tr>
+    <td><input type="text" id="dauvao"></td>
+
+    <td><select name="" id="select1">
+        <option value="vnd">VNĐ</option>
+        <option value="usd">USD</option>
+    </select>
+    </td>
+    <td><select name="" id="select2">
+    <option value="vnd">VNĐ</option>
+    <option value="usd">USD</option>
+    </select>
+    </td>
+ <!-- // khi nhấn onclick thì hàm function sẽ hoạt động-->
+    <td><button onclick="chuyendoitien()"; style="background-color: purple; color:white" >Convert</button></td>
+
+
+</table>
+<script>
+    function chuyendoitien() {
+        // document.getElementById('dauvao').value lấy giá trị từ thẻ có id "dauvao"
+        let giatrivao = document.getElementById('dauvao').value;
+
+        //let select1 = document.getElementById('select1').value; lấy giá trị từ thẻ có id "select1"
+        let select1 = document.getElementById('select1').value;
+
+       //let select1 = document.getElementById('select1').value; lấy giá trị từ thẻ có id "select2"
+        let select2 = document.getElementById('select2').value;
+
+        if (select1 == select2)
+        {  alert(giatrivao);
+        }
+
+        if (select1 == 'vnd' && select2 == 'usd')
+
+        {
+            alert(giatrivao/23200);
+        }
+        if (select1 == 'usd' && select2 == 'vnd')
+        { alert(giatrivao*23200);}
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home blog</title>
+</head>
+<body>
+<a th:href="@{/blog/create}">Add new</a>
+<table width="700px" border="1">
+    <tr>
+        <th>STT</th>
+        <th>Name Blog</th>
+        <th>Content Blog</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <tr th:each="blog,loop : ${listBlog}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${blog.nameBlog}"></td>
+        <td th:text="${blog.contentBlog}"></td>
+<!--        <td><a th:href="@{/blog/{id}/delete(id=${blog.id})}">Delete</a></td>-->
+        <td><a th:href="@{/blog/delete/{id}(id=*{blog.id})}">Delete</a></td>
+        <td><a th:href="@{/blog/edit/{id}(id=*{blog.id})}">edit</a></td>
+        <!--        <td th:text="${student.classRoom.nameClass}"></td>-->
+        <!--        <td><a th:href="@{/detail/{codeStudent}(codeStudent=${student.codeStudent})}">Detail</a></td>-->
+    </tr>
+</table>
+<!--<div>-->
+<!--    <a th:href="@{'/listBlog'(page=${listBlog.number - 1})}" th:if="${listBlog.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${listBlog.number + 1}"></span>/<span th:text="${listBlog.totalPages}"></span>-->
+<!--    <a th:href="@{'/listBlog'(page=${listBlog.number + 1})}" th:if="${listBlog.hasNext()}">Next</a>-->
+<!--</div>-->
+</body>
+</html>

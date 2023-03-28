@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xây dựng lớp date</title>
+</head>
+<body>
+<script>
+    class MyDate
+    {
+        constructor(day, month, year)
+        {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+
+        }
+        setDay(day,month,year) {
+            alert(day + "/" + month + "/" + year);
+        }
+    }
+    let  date = new MyDate(2,2,2007);
+        date.setDay(2,3,1998)
+
+</script>
+</body>
+</html>

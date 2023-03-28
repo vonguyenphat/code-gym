@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let soNhapVao1 = parseInt(prompt("Nhập số thứ 1: "));
+    let soNhapVao2 = parseInt(prompt("Nhập số thứ 2: "));
+    kiemTraSoThanThiet(soNhapVao1, soNhapVao2)
+    function kiemTraSoThanThiet(soNhapVao1, soNhapVao2) {
+        let tong1 = 0
+        let tong2 = 0
+        for(let i=1;i<=soNhapVao1/2;i++){
+            if(soNhapVao1%i==0){
+                tong1 = tong1 + i
+            }
+        }
+        for(let i=1;i<=soNhapVao2/2;i++){
+            if(soNhapVao2%i==0){
+                tong2 = tong2 + i
+            }
+        }
+        if(tong2 == soNhapVao1 && tong1 == soNhapVao2){
+            alert("Đây là số thân thiết")
+        }else{
+            alert("Đây không phải số thân thiết")
+        }
+    }
+
+</script>
+</body>
+</html>

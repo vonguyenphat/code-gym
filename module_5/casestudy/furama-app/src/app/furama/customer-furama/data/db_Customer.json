@@ -1,0 +1,40 @@
+{
+  "customers": [
+    {
+      "id": "KH06",
+      "customerName": "Chú Bé Đần Tín",
+      "birthday": "2003/06/17",
+      "gender": "Nam",
+      "idCard": "111778",
+      "phone": "0865267103",
+      "email": "phat@gmail.com",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "address": "Thanh khuê"
+    }
+  ],
+  "customerTypes": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "gold"
+    },
+    {
+      "id": 4,
+      "name": "silver"
+    },
+    {
+      "id": 5,
+      "name": "member"
+    }
+  ]
+}

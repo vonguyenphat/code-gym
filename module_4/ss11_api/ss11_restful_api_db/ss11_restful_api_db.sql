@@ -1,0 +1,2 @@
+create database ss11_restfulApi_blog;
+use ss11_restfulApi_blog;

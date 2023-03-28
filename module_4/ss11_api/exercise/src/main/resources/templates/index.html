@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+
+<h1><span class="glyphicon glyphicon-home"></span> Manager Customer</h1>
+<hr>
+<div class="container">
+    <a class="add" th:href="@{/blog/create-blog}"> <span class="glyphicon glyphicon-plus"></span> Add new blog</a>
+</div>
+<div class="container">
+    <a class="add" th:href="@{/blog/index-category}"> <span class="glyphicon glyphicon-plus"></span> Category</a>
+</div>
+
+<input type="text" id="blogName"/>
+<button onclick="fineByName()">Find Student By Name (Ajax)</button>
+<br>
+<button onclick="downloadMore()">Tải thêm</button>
+<!--    table-->
+<div class="container-table">
+    <p>Customer List</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Content</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody id="result">
+        <tr th:object="${row}" th:each=" row,rowStat : ${blog}">
+            <td th:text="${rowStat.count}"></td>
+            <!--                <td th:text="*{id}"></td>-->
+            <td th:text="*{name}"></td>
+            <td th:text="*{categoryBlog.nameCategory}"></td>
+            <td th:text="*{content}"></td>
+            <td>
+                <button type="button"
+                        class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+                    </svg>
+                </button>
+            </td>
+            <!--             button delete-->
+            <td>
+                <input type="text" id="idStudent" th:value="*{id}" hidden>
+                <input type="text" id="nameStudent" th:value="*{name}" hidden>
+                <button type="button" onclick="deleteInfo()"
+                        class="btn btn-outline-danger"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <!--                        icon delete-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-trash3" viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                    </svg>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/student/delete}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--                gửi lên controller-->
+                <div class="modal-body">
+                    <input type="hidden" name="idDelete" id="idDelete">
+                    <span style="color: red"> BẠN CÓ MUỐN XOÁ </span> <span id="deleteName"> </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
+                    <button type="submit" class="btn btn-primary">ĐỒNG Ý</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function deleteInfo() {
+        let idStudent = document.getElementById("idStudent").value;
+        let nameStudent = document.getElementById("nameStudent").value;
+        document.getElementById("idDelete").value = idStudent;
+        document.getElementById("deleteName").innerText = nameStudent;
+    }
+    function downloadMore() {
+        $.ajax({
+            url: "http://localhost:8080/api/blog/list-blog",
+            type: "get",
+            success: function (data) {
+                let result = '';
+                for (let i = 0; i < data.length; i++) {
+                    result += `
+                    <tr>
+                        <td>${data[i].id}</td>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].categoryBlog.nameCategory}</td>
+                        <td>${data[i].content}</td>
+                        <td>
+                                <button type="button"
+                                    class="btn btn-outline-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+                                </svg>
+                                </button>
+                        </td>
+                        <!--             button delete-->
+                        <td>
+                            <input type="text" id="idStudent" th:value="*{id}" hidden>
+                            <input type="text" id="nameStudent" th:value="*{name}" hidden>
+                            <button type="button" onclick="deleteInfo()"
+                                    class="btn btn-outline-danger"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <!--                        icon delete-->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                }
+                $("#result").html(result);
+            }
+        })
+    }
+
+    function fineByName() {
+        let blogName = $("#blogName").val();
+        $.ajax({
+            url: "http://localhost:8080/api/blog/search",
+            data: {
+                name: blogName
+            },
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                let result = '';
+                for (let i = 0; i < data.length; i++) {
+                    result += `
+                    <tr>
+                        <td>${data[i].id}</td>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].categoryBlog.nameCategory}</td>
+                        <td>${data[i].content}</td>
+                        <td>
+                                <button type="button"
+                                    class="btn btn-outline-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+                                </svg>
+                                </button>
+                        </td>
+                        <!--             button delete-->
+                        <td>
+                            <input type="text" id="idStudent" th:value="*{id}" hidden>
+                            <input type="text" id="nameStudent" th:value="*{name}" hidden>
+                            <button type="button" onclick="deleteInfo()"
+                                    class="btn btn-outline-danger"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <!--                        icon delete-->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                }
+                $("#result").html(result);
+                // $("table tr:eq(2)").remove();
+            },
+            error: function (e) {
+            }
+        })
+    }
+</script>
+</html>

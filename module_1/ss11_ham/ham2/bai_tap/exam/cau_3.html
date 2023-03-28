@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr3 = [];
+    let arrKT = []
+    let count = 0;
+    let length_Ba = prompt("Nhập độ dài của mảng");
+    for (let i = 0; i < length_Ba; i++) {
+        arr3[i] = Number.parseInt(prompt("Nhập phần tử thứ " + (i + 1) + " trong mảng"))
+    }
+    let number = Number.parseInt(prompt("input N"))
+    for (let i = 0; i < arr3.length; i++) {
+        if ((arr3[i] % number) == 0 && arrKT[i].indexOf(arr3) == 0) {
+            arrKT.push(arr3);
+            count++;
+        }
+    }
+    alert(count)
+</script>
+</body>
+</html>

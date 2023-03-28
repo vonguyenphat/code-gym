@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+<body>
+
+<h1><span class="glyphicon glyphicon-home"></span> Manager Customer</h1>
+<hr>
+<div class="container">
+    <a class="add" th:href="@{/view-person}"> <span class="glyphicon glyphicon-plus"></span> Manager person </a>
+</div>
+
+
+<!--    table-->
+<div class="container-table">
+    <p>Book List</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Name book</th>
+            <th>Author Book</th>
+            <th>Describe Book</th>
+            <th>Amount Book</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody th:each=" row,rowStat : ${bookList}">
+        <tr th:object="${row}">
+            <td th:text="${rowStat.count}"></td>
+            <!--                <td th:text="*{id}"></td>-->
+            <td th:text="*{nameBook}"></td>
+            <td th:text="*{authorBook}"></td>
+            <td th:text="*{describeBook}"></td>
+            <td th:text="*{amountBook}"></td>
+            <!--             button delete-->
+            <td>
+                <a  th:href=" @{/create/{id}(id=${row.idBook})}">Borrower</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/student/delete}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--                gửi lên controller-->
+                <div class="modal-body">
+                    <input type="hidden" name="idDelete" id="idDelete">
+                    <span style="color: red"> BẠN CÓ MUỐN XOÁ </span> <span id="deleteName"> </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
+                    <button type="submit" class="btn btn-primary">ĐỒNG Ý</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+
+</body>
+<script>
+    function deleteInfo() {
+        let idStudent = document.getElementById("idStudent").value;
+        let nameStudent = document.getElementById("nameStudent").value;
+        document.getElementById("idDelete").value = idStudent;
+        document.getElementById("deleteName").innerText = nameStudent;
+    }
+</script>
+</html>

@@ -1,0 +1,133 @@
+    <div class="panel panel-default">
+                <div class="panel-heading">
+                    <H4 class="panel-title"> CH?N PHIM</H4>
+                </div>
+                <ul class="list-group">
+                    <li class="ng-scope">
+                        <button class="list-group-item movie active">
+                            <div class="showtimes-row">
+                                <img src="https://cdn.galaxycine.vn/media/2023/3/9/demon-slayer-4_1678344779186.jpg"
+                                     alt="">
+                                <div class="title-movie">
+                                    <p class="upper-text ng-binding">Demon Slayer: To The Swordsmith Village</p>
+                                    <p class="vn upper-text ng-binding">Thanh Guom Di?t Qu?: Ðu?ng Ð?n Làng Rèn Guom</p>
+                                </div>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <H4 class="panel-title">CH?N NGÀY CHI?U</H4>
+                </div>
+                <ul class="list-group-date">
+                    <li class="ng-scope-date">
+                        <a href="">
+                            <p>21-01-2022</p>
+                        </a>
+                    </li>
+                    <li class="ng-scope-date">
+                        <a href="">
+                            <p>21-01-2022</p>
+                        </a>
+                    </li>
+                    <li class="ng-scope-date">
+                        <a href="">
+                            <p>21-01-2022</p>
+                        </a>
+                    </li>
+                    <li class="ng-scope-date">
+                        <a href="">
+                            <p>21-01-2022</p>
+                        </a>
+                    </li>
+                    <li class="ng-scope-date">
+                        <a href="">
+                            <p>21-01-2022</p>
+                        </a>
+                    </li>
+                </ul>
+   <div class="panel panel-default">
+                <div class="panel-heading">
+                    <H4 class="panel-title">CH?N SU?T CHI?U</H4>
+                </div>
+            </div>
+.container {
+}
+
+.list-group-item .showtimes-row img {
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+}
+
+button.list-group-item.movie.active {
+    background: white;
+    color: black;
+    border: none;
+    text-align: left;
+    margin-right: 0;
+}
+
+.title-movie p {
+    margin-bottom: 0px;
+}
+
+h4.panel-title {
+    text-align: center;
+}
+
+ul.list-group {
+    list-style-type: none;
+}
+
+.panel-heading {
+    background-color: #F26B38;
+    color: white;
+}
+
+@media (max-width: 732px) {
+    ul.list-group {
+        overflow: scroll;
+        height: 145px;
+    }
+}
+
+.col-lg-4 {
+    padding: 0 15px;
+}
+
+ul.list-group-date {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+.ng-scope-date > a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+li.ng-scope-date {
+    margin: 20px 0;
+}
+
+@media (max-width: 732px) {
+    ul.list-group-date {
+
+        overflow: scroll;
+        height: 128px;
+    }
+}
+
+.title-movie p {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.title-movie > p.vn {
+    color: #a0a3a7;
+}
+

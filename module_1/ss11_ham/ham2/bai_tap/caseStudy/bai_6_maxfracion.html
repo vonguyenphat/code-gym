@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numerators   =  [5,2,5];
+    let denominators   =  [6,3,4];
+    let cs = 0;
+    let cc1;
+    let cc2;
+    for (let i = 1; i <numerators.length ; i++) {
+        if (numerators[cs]*denominators[i]<numerators[i]*denominators[cs])
+        {
+            cs = i;
+            cc1 = numerators[i]
+            cc2 = denominators[i];
+
+        }
+
+    }
+
+
+    document.write(cc1 + "/"+cc2 + " là phân số lớn nhất, có chỉ số là: "+cs );
+</script>
+</body>
+</html>

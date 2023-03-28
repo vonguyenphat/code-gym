@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Create</h2>
+<form th:object="${personBookBorrower}" th:action="@{/save}"  method="post">
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td><input th:field="*{namePerson}"/></td>
+            <span th:if="${#fields.hasErrors('namePerson')}" th:errors="*{namePerson}"></span>
+        </tr>
+        <tr>
+            <td>Name book</td>
+            <td>
+                <label>
+                    <select th:field="*{books}" name="idBook">
+                        <option
+                                th:value="${book.idBook}" th:text="${book.nameBook}">
+                        </option>
+                    </select>
+                </label>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>Borrowed Date</td>
+            <td><input type="date" th:field="*{borrowedDate}"/></td>
+            <span th:if="${#fields.hasErrors('borrowedDate')}" th:errors="*{borrowedDate}"></span>
+        </tr>
+        <tr>
+            <td>Pay Day</td>
+            <td><input type="date" th:field="*{payDay}"/></td>
+            <span th:if="${#fields.hasErrors('payDay')}" th:errors="*{payDay}"></span>
+        </tr>
+        <tr>
+            <td><input type="reset" value="Reset"></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

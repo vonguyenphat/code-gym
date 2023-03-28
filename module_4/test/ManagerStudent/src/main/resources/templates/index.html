@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+<body>
+
+<h1><span class="glyphicon glyphicon-home"></span> Manager Customer</h1>
+<hr>
+<div class="container">
+    <a class="add" th:href="@{/student/create}"> <span class="glyphicon glyphicon-plus"></span> Add new student</a>
+</div>
+<div class="search">
+    <form action="">
+        <input type="text" placeholder="name student" class="nameSearch">
+        <select name="classSearch">
+            <option value="">---</option>
+            <option th:each="row : ${classNames}"
+                    th:value="${row.classID}"
+                    th:text="${row.className}">
+            </option>
+        </select>
+        <button type="submit">search</button>
+    </form>
+</div>
+<!--    table-->
+<div class="container-table">
+    <p>Customer List</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Class name</th>
+            <th>Email</th>
+            <th>Sex</th>
+            <th>phoneNumber</th>
+            <th>birthdate</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody th:each=" row,rowStat : ${students}">
+        <tr th:object="${row}">
+            <td th:text="${rowStat.count}">
+
+            </td>
+            <!--                <td th:text="*{id}"></td>-->
+            <td th:text="*{nameStudent}"></td>
+            <td th:text="*{className.className}"></td>
+            <td th:text="*{email}"></td>
+            <td th:text="*{sex ? 'Nam' : 'Nữ'}"></td>
+            <td th:text="*{phoneNumber}"></td>
+            <td th:text="*{#dates.format(birthdate, 'yyyy-MM-dd')}"></td>
+            <!-- Button trigger modal update-->
+            <td>
+                <a th:href="@{student/edit/{id}(id=${row.idStudent})}"
+                   class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+                    </svg>
+                </a>
+                <!--                    <a th:href="@{/student/edit(id=${row.idStudent})}"> <span-->
+                <!--                            class="glyphicon glyphicon-pencil"> sửa</span>-->
+                <!--                    </a>-->
+            </td>
+
+            <!--             button delete-->
+            <td>
+                <button type="button" th:onclick="deleteInfo([[${row.idStudent}]],[[${row.nameStudent}]])"
+                        class="btn btn-outline-danger"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <!--                        icon delete-->
+                   Xóa
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a th:href="@{'/student'(page=${students.number - 1},size=2)}" th:if="${students.hasPrevious()}">Previous</a>
+    <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>
+    <a th:href="@{'/student'(page=${students.number + 1},size=2)}" th:if="${students.hasNext()}">Next</a>
+</div>
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/student/delete}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--                gửi lên controller-->
+                <div class="modal-body">
+                    <input type="hidden" name="idDelete" id="idDelete">
+                    <span style="color: red"> BẠN CÓ MUỐN XOÁ </span> <span id="deleteName"> </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
+                    <button type="submit" class="btn btn-primary">ĐỒNG Ý</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+<script>
+    function deleteInfo(idStudent, nameStudent) {
+        document.getElementById("idDelete").value = idStudent;
+        document.getElementById("deleteName").innerText = nameStudent;
+    }
+</script>
+</html>

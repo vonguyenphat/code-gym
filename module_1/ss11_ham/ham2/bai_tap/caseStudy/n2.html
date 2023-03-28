@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Danh sách bệnh nhân</h2>
+<p id="result"></p>
+</table>
+</body>
+<script>
+    class Product{
+        constructor(name,age, dia_chi,number_phone) {
+            this.name = name;
+            this.age = age;
+            this.dia_chi = dia_chi;
+            this.number_phone = number_phone;
+
+        }
+        setName(name){
+            this.name = name
+        }
+        getName(){
+            return this.name
+        }
+        setAge(age){
+            this.age = age
+        }
+        getAge(){
+            return this.age
+        }
+        setDia_chi(dia_chi){
+            this.dia_chi = dia_chi;
+        }
+        getDia_chi(){
+            return this.dia_chi
+        }
+        setNumber_phone(number_phone){
+            this.number_phone = number_phone
+        }
+        getNumber_phone(){
+            return this.number_phone
+        }
+    }
+    function display(product) {
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <th>stt</th>\n' +
+            '        <th>Họ và tên </th>\n' +
+            '        <th>Tuổi</th>\n' +
+            '        <th>Địa chỉ</th>\n' +
+            '        <th>Số điện thoại</th>\n' +
+            '    </tr>'
+        for (let i=0; i<product.length;i++)
+            {
+                tableString += '    <tr>\n' +
+                    '        <td>1</td>\n' +
+                    '        <td>'+product[i].getName()+'</td>\n' +
+                    '        <td>'+product[i].getAge()+'</td>\n' +
+                    '        <td>'+product[i].getDia_chi()+'</td>\n' +
+                    '        <td>'+product[i].getNumber_phone()+'</td>\n' +
+
+                    '    </tr>'
+            }
+        tableString += '</table>';
+        document.getElementById("result").innerHTML = tableString;
+    }
+    let productList = [];
+    productList.push(new Product("Nguyễn Lê Hoảng Anh ", "20", "Quảng Nam ", "0923434565"));
+    productList.push(new Product("Nguyễn Trần Cảnh ", "30", "Quảng Nam ", "094324+324"));
+    productList.push(new Product("Hoàng Thanh Hùng ", "15", "Quảng Nam ", "01123451235"));
+    productList.push(new Product("Trần Lệ Quyên ", "19", "Quảng Nam ", "0923092748"));
+
+    display(productList);
+
+</script>
+</html>

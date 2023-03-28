@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>temperature</title>
+</head>
+<body>
+<script>
+    class Temperature{
+        constructor(nhietdo) {
+            this.nhietdo = nhietdo;
+        }
+        ChuyendoisangdoF(){
+            return this.nhietdo * 1.8 + 32;
+        }
+        chuyendoisangdoK(){
+            return this.nhietdo + 273.15;
+        }
+    }
+    let temperature = new Temperature(35)
+    let doF = temperature.ChuyendoisangdoF();
+    let doK = temperature.chuyendoisangdoK()
+    document.write("F = " + doF + "<br>"+ " K = "+doK);
+
+</script>
+</body>
+</html>

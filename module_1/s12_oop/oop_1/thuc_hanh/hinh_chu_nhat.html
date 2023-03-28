@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" style="border: 2px solid #d3d3d3"></canvas>
+<script>
+    class Rectangle
+        {
+            constructor(dai , rong)
+            {
+                this.dai = dai;
+                this.rong = rong;
+            }
+        Chieudai(){
+                return this.dai;
+        }
+        Chieurong(){
+                return this.rong;
+        }
+        DienTich(){
+            return this.dai * this.rong;
+        }
+        ChuVi(){
+                return 2*(this.dai*this.rong)
+        }
+        }
+        let a = prompt("input a")
+        let b = prompt("input b")
+
+    let rectangle = new Rectangle(a,b)
+
+        let dientich = rectangle.DienTich();
+        let chuvi = rectangle.ChuVi();
+
+        let chieu_dai = rectangle.Chieudai();
+        let chieu_rong = rectangle.Chieurong();
+        document.write("Chiểu dài = "+chieu_dai+"<br>Chiều rộng = "+chieu_rong+"<br>")
+        document.write("Chu vi của hình chữ nhật là "+chuvi+"<br> Diện tích của hình chữ nhật là "+dientich)
+
+    function createRec(Rectangle) {
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        ctx.beginPath();
+        ctx.lineWidth = "3";
+        ctx.arc(5, 5, chieu_dai.getLongs(), chieu_rong.getWidths());
+    }
+
+
+
+
+</script>
+</body>
+</html>

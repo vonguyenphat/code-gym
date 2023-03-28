@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>update customer</h1>
+<form th:action="@{/customer/update}" th:object="${customer}" method="post" >
+    <label>
+        <p>Customer type</p>
+        <select  th:field="*{customerType}">
+            <option
+                    th:each="row : ${customerTypes}"
+                    th:value="${row.customerTypeId}"
+                    th:text="${row.customerTypeName}"
+            ></option>
+        </select>
+    </label><br><br>
+    <label>
+        <input type="text"  th:field="*{customerName}" placeholder="input name customer"><br>
+        <span style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
+    </label><br><br>
+    <label>
+        <input type="date"  th:field="*{customerBirthday}" >
+    </label><br><br>
+    <label>
+        Men <input type="radio"  th:field="*{customerGender}" name="customerGender" th:value="true">
+    </label>
+    <label>
+        Woman <input type="radio"  th:field="*{customerGender}" name="customerGender" th:value="false">
+    </label><br><br>
+    <label>
+        <input type="text"  th:field="*{customerIdCart}" placeholder="input Id Cart customer">
+    </label><br><br>
+    <label>
+        <input type="text"  th:field="*{customerPhone}" placeholder="input phone customer">
+    </label><br><br>
+    <label>
+        <input type="text"  th:field="*{customerEmail}" placeholder="input email customer">
+    </label><br><br>
+    <label>
+        <input type="text"  th:field="*{customerAddress}" placeholder="input address customer">
+    </label><br><br>
+    <button type="reset">reset</button>
+    <button type="submit">save</button>
+</form>
+</body>
+</html>

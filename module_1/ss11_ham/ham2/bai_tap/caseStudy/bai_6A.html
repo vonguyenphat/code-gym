@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6A</title>
+</head>
+<body>
+<script>
+let a = [];
+
+
+    let n = prompt("Nhập số lượng giá trị trong mảng");
+    for (let i=0;i<n;i++)
+        {
+            a[i] =Number.parseInt( prompt("Nhập giá trị thứ " + (i+1)+": "));
+        }
+    let b = new Array(a.length)
+    b[0] = a[0];
+    document.write("mang = ["+a+"]<br>")
+    for (let i=1;i<a.length;i++)
+        {
+
+         b[i] =parseInt ( b[i-1] + a[i]);
+
+        }
+    document.write("mang = ["+b+"]<br>")
+
+
+</script>
+</body>
+</html>

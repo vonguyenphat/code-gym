@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài5</title>
+</head>
+<body>
+<p>Kiểm tra nguyên âm phụ âm</p>
+<input type="text" id="inputText">
+<button onclick="bai5()">Enter</button>
+<p id="outbai5"></p>
+<script>
+function bai5() {
+    let alphabet = document.getElementById("inputText").value;
+    switch (alphabet)
+    {
+        case 'o':
+        case 'u':
+        case 'i':
+        case 'a':
+        case 'e':
+        case 'O':
+        case 'U':
+        case 'I':
+        case 'A':
+        case 'E':
+            document.getElementById("outbai5").innerHTML = alphabet + " là nguyên âm";
+            break;
+            default:document.getElementById("outbai5").innerHTML = alphabet + " là phụ âm";
+    }
+
+}
+</script>
+</body>
+</html>

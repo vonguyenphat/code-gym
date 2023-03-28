@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xây dựng hình tròn</title>
+</head>
+<body>
+<script>
+    class Circle{
+        constructor(r) {
+            this.radius= r;
+        }
+        radiusS(){
+            return this.radius;
+        }
+        areaA(){
+            return Math.PI*this.radius*this.radius;
+        }
+    }
+    let circle= new Circle(prompt("input Bán Kính"));
+    let radius= circle.radiusS();
+    let area= circle.areaA();
+    alert("radius: " + radius + "; area: " + area);
+
+</script>
+</body>
+</html>

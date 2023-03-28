@@ -1,0 +1,168 @@
+<div  *ngIf="typeAlert!=null" class="alert alert-warning d-flex align-items-center" role="alert">
+    <span style="text-align: center">{{messageAlert}}</span>
+</div>
+
+<div class="container">
+  <div class="search">
+    <form action="">
+      <div class="input-group">
+        <input type="text" class="form-control">
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control">
+      </div>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <button class="btn btn-info">Tìm kiếm</button>
+    </form>
+  </div>
+
+  <div class="tilte row">
+    <div class="col-sm-6">
+      <h2>Quản lí dịch vụ</h2>
+    </div>
+    <div class="col-sm-6">
+      <!--      <a routerLink="/product/create" class="btn btn-success">-->
+      <!--        <span> Thêm mới dịch vụ</span></a>-->
+      <!--      <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Thêm mới dịch vụ</button>-->
+      <button class="btn btn-success" (click)="open(content)">Thêm mới dịch vụ</button>
+    </div>
+  </div>
+
+  <div class="container-table row">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên dịch vụ</th>
+        <th>Loại dịch vụ</th>
+        <th>Diện tích sử dụng</th>
+        <th>Chi phí thuê</th>
+        <th>Số lượng người tối đa</th>
+        <th>Kiểu thuê</th>
+        <th>Tiêu chuẩn phòng</th>
+        <th>Mô tả tiện nghi khác</th>
+        <th>Diện tích hồ bơi</th>
+        <th>Số tầng</th>
+        <th>Dịch vụ miễn phí đi kèm</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of serviceFuramas; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.serviceType.name}}</td>
+        <td>{{item.area}}</td>
+        <td>{{item.cost}}</td>
+        <td>{{item.peopleMax}}</td>
+        <td>{{item.rentType.name}}</td>
+        <td>{{item.standardRoom}}</td>
+        <td>{{item.descriptionOtherConvenience}}</td>
+        <td>{{item.areaPool}}</td>
+        <td>{{item.numberOfFloors}}</td>
+        <td>{{item.serviceDiv.name}}</td>
+        <td class="td-action">
+          <button class="btn btn-info">View</button>
+          <button class="btn btn-warning" (click)="editServiceFurama(item.id)">edit</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"(click)="openDeleteProductModal(item.id, item.name)">Xóa
+          </button>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--ng modal add new-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" style="font-size: 30px;color: darkblue">Thêm mới dịch vụ</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="serviceFuramaForm" (ngSubmit)="addNewService()">
+      <div class="row">
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">ID dịch vụ: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="id">
+          <span class="errormessage"
+                *ngIf="serviceFuramaForm.controls.id.hasError('required') && serviceFuramaForm.controls.id.touched">
+            *Vui lòng nhập id dịch vụ</span>
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Diện tích sử dụng: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="area">
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Tên dịch vụ: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="name">
+        </div>
+        <div class="col-6 div-select-modal-addNew">
+          <label class="tilte-input-modal-addNew">Loại dịch vụ: </label><br>
+          <select class="form-select select-modal-addNew" formControlName="serviceType">
+            <option selected *ngFor="let item of typeServices"
+                    [ngValue]="item">{{item.name}}</option>
+          </select><br><br>
+          <span class="errormessage"
+                *ngIf="serviceFuramaForm.controls.serviceType.hasError('required') && serviceFuramaForm.controls.serviceType.touched">
+            *Vui lòng chọn loại dịch vụ</span>
+        </div>
+
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Chi phí thuê: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="cost">
+        </div>
+        <div class="col-6 div-select-modal-addNew">
+          <label class="tilte-input-modal-addNew"> Kiểu thuê:</label><br>
+          <select class="form-select select-modal-addNew " formControlName="rentType">
+            <option *ngFor="let item of rentTypes"    [ngValue]="item" >{{item.name}}</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Số lượng người tối đa: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="peopleMax">
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Tiêu chuẩn phòng: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="standardRoom">
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Mô tả tiện nghi khác: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="descriptionOtherConvenience">
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Diện tích hồ bơi: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="areaPool">
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Số tầng: </label>
+          <input type="text" class="form-control input-modal-addNew" formControlName="numberOfFloors">
+        </div>
+        <div class="col-6 div-select-modal-addNew">
+          <label class="tilte-input-modal-addNew"> Dịch vụ miến phí đi kèm:</label><br>
+          <select class="form-select select-modal-addNew " formControlName="serviceDiv">
+            <option selected *ngFor="let item of divTypeServices"  [ngValue]="item">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="tilte-input-modal-addNew">Hình ảnh dịch vụ: </label>
+          <input type="file" class="form-control input-modal-addNew" formControlName="image">
+        </div>
+      </div>
+      <div class="btn-modal-add-new">
+        <button [disabled]="serviceFuramaForm.invalid" type="submit" class="btn btn-primary" >Thêm mới</button>
+        <button class="btn btn-dark" (click)="dimiss()">Trở lại</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+

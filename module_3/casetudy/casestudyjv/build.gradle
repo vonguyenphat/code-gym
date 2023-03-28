@@ -1,0 +1,27 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+
+    implementation group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.8'
+    implementation group: 'org.apache.tiles', name: 'tiles-extras', version: '3.0.8'
+
+}
+
+test {
+    useJUnitPlatform()
+}
